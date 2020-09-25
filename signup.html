@@ -24,16 +24,17 @@
           <div class="card">
             <div class="card-body">
               <form id="form-register" action="">
-                <legend>Gender</legend>
+                <legend>Registration Form</legend>
                 <div class="form-group">
                   <div class="form-check">
+                    <label>Gender:</label>
                     <label class="form-check-label">
                       <input
                         type="radio"
                         class="form-check-input"
-                        name="optionsRadios"
-                        id="optionsRadios1"
-                        value="option1"
+                        name="gender"
+                        id="gender"
+                        value="male"
                         checked=""
                       />
                       Male
@@ -42,9 +43,9 @@
                       <input
                         type="radio"
                         class="form-check-input"
-                        name="optionsRadios"
-                        id="optionsRadios1"
-                        value="option1"
+                        name="gender"
+                        id="gender"
+                        value="female"
                         checked=""
                       />
                       Female
@@ -53,9 +54,9 @@
                       <input
                         type="radio"
                         class="form-check-input"
-                        name="optionsRadios"
-                        id="optionsRadios1"
-                        value="option1"
+                        name="gender"
+                        id="gender"
+                        value="other"
                         checked=""
                       />
                       Others
@@ -81,14 +82,6 @@
                     placeholder="Surname"
                     autofocus
                   />
-                </div>
-
-                <div class="form-group">
-                  <label for="exampleSelect1">Countries</label>
-                  <select class="form-control" id="exampleSelect1">
-                    <option></option>
-                    <option>1</option>
-                  </select>
                 </div>
 
                 <div class="form-group">
@@ -146,8 +139,21 @@
                 </div>
 
                 <div class="form-group">
-                  <label for="exampleTextarea">Example textarea</label>
-                  <textarea class="form-control" id="exampleTextarea" rows="2"></textarea>
+                  <label for="exampleSelect1">Countries</label>
+                  <select class="form-control" id="exampleSelect1">
+                    <option></option>
+                    <option>1</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label>Example textarea</label>
+                  <textarea
+                    class="form-control"
+                    id="exampleTextarea"
+                    rows="2"
+                    placeholder="Your message or comment here."
+                  ></textarea>
                 </div>
 
                 <div class="form-group">
