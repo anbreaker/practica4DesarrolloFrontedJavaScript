@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Practice 4</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/sketchy/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="shortcut icon" href="./img/favicon.png" type="image/x-icon" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="header-nav"></div>
+    </div>
+
+    <!-- Form -->
+
+    <div class="container p-4 form-sign">
+      <div class="row">
+        <div class="col-md-6 offset-md-3">
+          <div class="card">
+            <div class="card-body">
+              <form action="">
+                <legend>Gender</legend>
+                <div class="form-group">
+                  <div class="form-check">
+                    <label class="form-check-label">
+                      <input
+                        type="radio"
+                        class="form-check-input"
+                        name="optionsRadios"
+                        id="optionsRadios1"
+                        value="option1"
+                        checked=""
+                      />
+                      Male
+                    </label>
+                    <label class="form-check-label">
+                      <input
+                        type="radio"
+                        class="form-check-input"
+                        name="optionsRadios"
+                        id="optionsRadios1"
+                        value="option1"
+                        checked=""
+                      />
+                      Female
+                    </label>
+                    <label class="form-check-label">
+                      <input
+                        type="radio"
+                        class="form-check-input"
+                        name="optionsRadios"
+                        id="optionsRadios1"
+                        value="option1"
+                        checked=""
+                      />
+                      Others
+                    </label>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <input
+                    type="text"
+                    name="name"
+                    class="form-control"
+                    placeholder="Name"
+                    autofocus
+                  />
+                </div>
+
+                <div class="form-group">
+                  <input
+                    type="text"
+                    name="surname"
+                    class="form-control"
+                    placeholder="Surname"
+                    autofocus
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="exampleSelect1">Countries</label>
+                  <select class="form-control" id="exampleSelect1">
+                    <option></option>
+                    <option>1</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <input
+                    type="text"
+                    name="email"
+                    placeholder="Email"
+                    class="form-control"
+                  />
+                </div>
+
+                <div class="form-group">
+                  <input
+                    type="text"
+                    name="phone"
+                    placeholder="Phone"
+                    class="form-control"
+                  />
+                </div>
+
+                <div class="form-group">
+                  <input
+                    type="text"
+                    name="user"
+                    placeholder="User"
+                    class="form-control"
+                  />
+                </div>
+
+                <div class="form-group">
+                  <input
+                    type="password"
+                    name="password"
+                    placeholder="Password"
+                    class="form-control"
+                  />
+                </div>
+
+                <div class="form-group">
+                  <input
+                    type="password"
+                    name="password-confirm"
+                    placeholder="Confirm Password"
+                    class="form-control"
+                  />
+                </div>
+
+                <div class="form-group">
+                  <input
+                    type="api-key"
+                    name="api-key"
+                    placeholder="API key"
+                    class="form-control"
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="exampleTextarea">Example textarea</label>
+                  <textarea class="form-control" id="exampleTextarea" rows="2"></textarea>
+                </div>
+
+                <div class="form-group">
+                  <div class="custom-control custom-checkbox">
+                    <input
+                      type="checkbox"
+                      class="custom-control-input"
+                      id="customCheck1"
+                      checked=""
+                    />
+                    <label class="custom-control-label" for="customCheck1"
+                      >Acept Termns and conditions</label
+                    >
+                  </div>
+                </div>
+
+                <button type="button" id="btn-send" class="btn btn-info btn-block">
+                  Send
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer class="container footer-page p-4"></footer>
+    </div>
+    <script type="module" src="./js/app.js"></script>
+  </body>
+</html>

@@ -6,7 +6,6 @@ body {
 }
 
 footer {
-  position: absolute;
+  flex: auto;
   bottom: 0;
-  width: 50%;
 }

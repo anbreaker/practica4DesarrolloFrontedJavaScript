@@ -8,7 +8,7 @@ export const templateFooter = `
       <p class="card-text">Author: Francisco Javier Antúnez Durán aka anbreaker</p>
       <a
         href="https://github.com/anbreaker/practica4DesarrolloFrontedJavaScript"
-        class="btn btn-primary"
+        class="btn btn-outline-success"
         >Go to Github Project</a
       >
     </div>

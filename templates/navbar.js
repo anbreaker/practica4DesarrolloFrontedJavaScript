@@ -16,13 +16,13 @@ export const templateNavbar = `
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="#">Home<span class="sr-only"></span></a>
+          <a class="nav-link" href="/">Home<span class="sr-only"></span></a>
         </li>
         <li class="nav-item active">
-          <a class="nav-link" href="#">Sign In<span class="sr-only"></span></a>
+          <a class="nav-link" href="/login.html">Login<span class="sr-only"></span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Sign Up</a>
+          <a class="nav-link" href="/signup.html">Sign Up</a>
         </li>
       </ul>
     </div>
