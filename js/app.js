@@ -6,7 +6,7 @@ const main = () => {
   if (btnSend) btnSend.addEventListener('click', onClick);
 
   document.querySelector('.header-nav').innerHTML = templateNavbar;
-  document.querySelector('.footer-page').innerHTML = templateFooter;
+  document.querySelector('.main').innerHTML = templateFooter;
 };
 
 const onClick = () => {
