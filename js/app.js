@@ -16,13 +16,9 @@ const onClickRegister = () => {
   const formRegister = document.querySelector('#form-register');
   const inputsForm = [...formRegister.querySelectorAll('input')];
 
-  console.log(inputsForm[11].checked);
-  // inputsForm.forEach((item) => console.log(item));
-  // recorrer(inputsForm);
+  // console.log(inputsForm[11].checked);
+  console.log(inputsForm);
+  inputsForm.forEach((item) => console.log(item));
 };
-
-// const recorrer = (data) => {
-//   data.forEach(item => console.log(item.);)
-// }
 
 document.addEventListener('DOMContentLoaded', main);
