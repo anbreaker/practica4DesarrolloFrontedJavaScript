@@ -21,7 +21,7 @@ const sendData = (event) => {
 };
 
 const validateForm = (formRegister) => {
-  const inputsForm = [...formRegister.querySelectorAll('.form-control')];
+  const inputsForm = [...formRegister.querySelectorAll('.form-input')];
   // console.log(inputsForm[11].checked);
   console.log(inputsForm);
   inputsForm.forEach((item) => console.log(item.value));
