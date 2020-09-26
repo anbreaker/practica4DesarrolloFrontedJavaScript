@@ -3,16 +3,18 @@ import {templateFooter} from '../templates/footer.js';
 
 const main = () => {
   const formRegister = document.querySelector('#form-register');
-  formRegister.addEventListener('submit', sendData);
 
   document.querySelector('.header-nav').innerHTML = templateNavbar;
   document.querySelector('.main').innerHTML = templateFooter;
 
-  const countries = ['Spain', 'Portugal', 'France', 'Italy'];
-  let countriesSelect = '<option></option>';
-  countries.forEach((item) => (countriesSelect += `<option>${item}</option>`));
+  if (formRegister) {
+    formRegister.addEventListener('submit', sendData);
+    const countries = ['Spain', 'Portugal', 'France', 'Italy'];
+    let countriesSelect = '<option></option>';
+    countries.forEach((item) => (countriesSelect += `<option>${item}</option>`));
 
-  formRegister.querySelector('#exampleSelect').innerHTML = countriesSelect;
+    formRegister.querySelector('#exampleSelect').innerHTML = countriesSelect;
+  }
 };
 
 const sendData = (event) => {
