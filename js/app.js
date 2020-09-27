@@ -24,6 +24,7 @@ function main() {
     const user = {};
     // const formRegister = document.querySelector('#form-register');
     const inputsForm = [...formRegister.querySelectorAll('.form-input')];
+
     validateForm(inputsForm);
 
     user.gender = inputsForm.filter((item) => item.checked)[0].value;
@@ -46,12 +47,14 @@ function main() {
     dataBase.push(user);
     window.localStorage.setItem('users', JSON.stringify(dataBase));
 
-    // Form = ''
-    inputsForm.forEach((item) => (item.value = ''));
+    if (user.password === user.confirmPassword) {
+      inputsForm.forEach((item) => (item.value = ''));
+    } else {
+      inputsForm[8].value = '';
+      showSms('The password does not match');
+    }
 
-    alert('Register ok!');
-
-    console.log(user);
+    if (inputsForm[8].value === inputsForm[9].value) window.location = 'login.html';
   }
 
   function onClickLogin(event) {
@@ -62,6 +65,7 @@ function main() {
     userLog.name = inputsLogin[0].value;
     userLog.password = inputsLogin[1].value;
 
+    // Sacar esto....
     const dataBase = window.localStorage.getItem('users')
       ? JSON.parse(window.localStorage.getItem('users'))
       : [];
@@ -87,7 +91,8 @@ function main() {
       <p>${smsLog}</p>
     </div>`;
 
-    formLogin.querySelector('#sms').innerHTML = sms;
+    if (formLogin) formLogin.querySelector('#sms').innerHTML = sms;
+    if (formRegister) formRegister.querySelector('#sms').innerHTML = sms;
   }
 }
 
