@@ -9,3 +9,7 @@ footer {
   flex: auto;
   bottom: 0;
 }
+
+.nodisplay {
+  display: none !important;
+}
