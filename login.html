@@ -27,12 +27,15 @@
               <!-- Form -->
 
               <form id="form-login" action="">
+                <legend>Go to user Movies:</legend>
                 <div class="form-group">
                   <input
                     type="text"
                     name="name"
+                    id="input-log"
                     class="form-control"
                     placeholder="Name"
+                    required
                   />
                 </div>
 
@@ -40,12 +43,14 @@
                   <input
                     type="password"
                     name="password"
-                    placeholder="Password"
+                    id="input-log"
                     class="form-control"
+                    placeholder="Password"
+                    required
                   />
                 </div>
 
-                <button type="button" id="btn-login" class="btn btn-info btn-block">
+                <button type="submit" id="btn-login" class="btn btn-info btn-block">
                   Log In
                 </button>
               </form>
