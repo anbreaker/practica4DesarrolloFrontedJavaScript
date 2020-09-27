@@ -1,9 +1,11 @@
 import {templateNavbar} from '../templates/navbar.js';
 import {templateFooter} from '../templates/footer.js';
+import {regionsSpain, regionsPortugal, countries} from './regionsConfig.js';
 
 function main() {
   const formRegister = document.querySelector('#form-register');
   const formLogin = document.querySelector('#form-login');
+  const selectRegion = document.querySelector('#selectRegion');
 
   document.querySelector('.header-nav').innerHTML = templateNavbar;
   document.querySelector('.main').innerHTML = templateFooter;
@@ -12,11 +14,21 @@ function main() {
 
   if (formRegister) {
     formRegister.addEventListener('submit', sendUser);
-    const countries = ['Spain', 'Portugal', 'France', 'Italy'];
-    let countriesSelect = '<option></option>';
-    countries.forEach((item) => (countriesSelect += `<option>${item}</option>`));
+    setSelect(countries);
+  }
 
+  if (selectRegion) selectRegion.addEventListener('change', selectRegions);
+
+  function setSelect(countries) {
+    let countriesSelect = '<option></option>';
+    countries.forEach(
+      (item) => (countriesSelect += `<option value="${item.id}">${item.name}</option>`)
+    );
     formRegister.querySelector('#exampleSelect').innerHTML = countriesSelect;
+  }
+
+  function selectRegions() {
+    console.log('ver');
   }
 
   function sendUser(event) {
@@ -112,7 +124,8 @@ const validateForm = (data) => {
 
 document.addEventListener('DOMContentLoaded', main);
 
+//https://plataforma.keepcoding.io/courses/dearrollo-frontend-javasscript-9/lectures/24503547
+//
+
 // https://plataforma.keepcoding.io/courses/dearrollo-frontend-javasscript-9/lectures/24503547
-// min 30
-// https://plataforma.keepcoding.io/courses/dearrollo-frontend-javasscript-9/lectures/24385589
-// min 36
+// min 3.20
