@@ -3,12 +3,15 @@ import {templateFooter} from '../templates/footer.js';
 
 const main = () => {
   const formRegister = document.querySelector('#form-register');
+  const formLogin = document.querySelector('#form-login');
 
   document.querySelector('.header-nav').innerHTML = templateNavbar;
   document.querySelector('.main').innerHTML = templateFooter;
 
+  if (formLogin) formLogin.addEventListener('submit', onClickLogin);
+
   if (formRegister) {
-    formRegister.addEventListener('submit', senduser);
+    formRegister.addEventListener('submit', sendUser);
     const countries = ['Spain', 'Portugal', 'France', 'Italy'];
     let countriesSelect = '<option></option>';
     countries.forEach((item) => (countriesSelect += `<option>${item}</option>`));
@@ -17,7 +20,7 @@ const main = () => {
   }
 };
 
-const senduser = (event) => {
+const sendUser = (event) => {
   event.preventDefault();
   const user = {};
   const formRegister = document.querySelector('#form-register');
@@ -44,13 +47,33 @@ const senduser = (event) => {
   dataBase.push(user);
 
   window.localStorage.setItem('users', JSON.stringify(dataBase));
+
+  // Borrar Form
   console.log(user);
 };
 
-const validateForm = (inputsForm) => {
+const onClickLogin = (event) => {
+  event.preventDefault();
+
+  const dataBase = window.localStorage.getItem('users')
+    ? JSON.parse(window.localStorage.getItem('users'))
+    : [];
+  const formLogin = document.querySelector('#form-login');
+  const inputsLogin = [...formLogin.querySelector('#input-log')];
+
+  let index = dataBase.find((item) => {
+    item.name === inputsLogin[0];
+  });
+  console.log(index);
+
+  if (!validateForm) return;
+
+  console.log('ver click login');
+};
+
+const validateForm = (data) => {
   try {
-    console.log('entra aqui');
-    inputsForm.forEach((item) => {
+    data.forEach((item) => {
       if (!item.value) {
         throw new Error(`Field not valid ${item}`);
       }
