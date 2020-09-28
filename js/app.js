@@ -1,6 +1,7 @@
 import {templateNavbar} from '../templates/navbar.js';
 import {templateFooter} from '../templates/footer.js';
 import {countries, regionsOfSpain, regionsOfPortugal} from './regionsConfig.js';
+import {saveUser, getUser} from './dataBase.js';
 
 function main() {
   const formRegister = document.querySelector('#form-register');
@@ -15,38 +16,28 @@ function main() {
 
   if (formRegister) {
     formRegister.addEventListener('submit', sendUser);
-    setSelect(countries);
+    fillSelect(countries, selectCountry);
   }
 
   if (selectCountry) selectCountry.addEventListener('change', selectRegions);
 
-  function setSelect(countries) {
-    let countriesSelect = '<option></option>';
-    countries.forEach(
-      (item) => (countriesSelect += `<option value="${item.name}">${item.name}</option>`)
+  function fillSelect(data, selector) {
+    let fillSelectHtml = '';
+    data.forEach(
+      (item) => (fillSelectHtml += `<option value="${item.name}">${item.name}</option>`)
     );
-    selectCountry.innerHTML = countriesSelect;
-  }
-
-  // Como no repetir esta funcion....
-
-  function setSelectRegions(regions) {
-    let countriesSelect = '';
-    regions.forEach(
-      (item) => (countriesSelect += `<option value="${item.name}">${item.name}</option>`)
-    );
-    selectRegion.innerHTML = countriesSelect;
+    selector.innerHTML = fillSelectHtml;
   }
 
   function selectRegions() {
     console.log(selectCountry, selectCountry.selectedIndex);
     if (selectCountry.selectedIndex === 1) {
       selectRegion.parentElement.classList.remove('nodisplay');
-      setSelectRegions(regionsOfSpain);
+      fillSelect(regionsOfSpain, selectRegion);
     }
     if (selectCountry.selectedIndex === 2) {
       selectRegion.parentElement.classList.remove('nodisplay');
-      setSelectRegions(regionsOfPortugal);
+      fillSelect(regionsOfPortugal, selectRegion);
     }
     if (selectCountry.selectedIndex === 0 || selectCountry.selectedIndex === 3) {
       selectRegion.parentElement.classList.add('nodisplay');
@@ -75,19 +66,14 @@ function main() {
     user.textArea = inputsForm[13].value;
     user.aceptTerms = inputsForm[14].checked;
 
-    const dataBase = window.localStorage.getItem('users')
-      ? JSON.parse(window.localStorage.getItem('users'))
-      : [];
-
-    dataBase.push(user);
-    window.localStorage.setItem('users', JSON.stringify(dataBase));
-
     if (user.password === user.confirmPassword) {
       inputsForm.forEach((item) => (item.value = ''));
     } else {
       inputsForm[8].value = '';
       showSms('The password does not match');
     }
+
+    saveUser(user);
 
     if (inputsForm[8].value === inputsForm[9].value) window.location = 'login.html';
   }
@@ -100,16 +86,8 @@ function main() {
     userLog.name = inputsLogin[0].value;
     userLog.password = inputsLogin[1].value;
 
-    // Sacar esto....
-    const dataBase = window.localStorage.getItem('users')
-      ? JSON.parse(window.localStorage.getItem('users'))
-      : [];
+    const findUser = getUser(userLog.name);
 
-    let findUser = dataBase.find(
-      (item) => item.name.toLowerCase() === inputsLogin[0].value.toLowerCase()
-    );
-
-    // Sacar esto....
     if (!findUser) {
       showSms('The data entry is not correct');
     } else if (findUser.password !== inputsLogin[1].value) {
