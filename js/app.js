@@ -24,22 +24,23 @@ function main() {
   function fillSelect(data, selector) {
     let fillSelectHtml = '';
     data.forEach(
-      (item) => (fillSelectHtml += `<option value="${item.name}">${item.name}</option>`)
+      (item) => (fillSelectHtml += `<option value="${item.id}">${item.name}</option>`)
     );
     selector.innerHTML = fillSelectHtml;
   }
 
   function selectRegions() {
-    console.log(selectCountry, selectCountry.selectedIndex);
-    if (selectCountry.selectedIndex === 1) {
+    console.log(selectCountry, selectCountry.value);
+    if (selectCountry.value === 'spain') {
       selectRegion.parentElement.classList.remove('nodisplay');
       fillSelect(regionsOfSpain, selectRegion);
     }
-    if (selectCountry.selectedIndex === 2) {
+    if (selectCountry.value === 'portugal') {
       selectRegion.parentElement.classList.remove('nodisplay');
       fillSelect(regionsOfPortugal, selectRegion);
     }
-    if (selectCountry.selectedIndex === 0 || selectCountry.selectedIndex === 3) {
+
+    if (selectCountry.value === '' || selectCountry.value === 'other') {
       selectRegion.parentElement.classList.add('nodisplay');
     }
   }

@@ -1,8 +1,8 @@
 export const countries = [
-  {id: 0, name: ''},
-  {id: 1, name: 'Spain'},
-  {id: 2, name: 'Portugal'},
-  {id: 3, name: 'Other Places in the World'},
+  {id: '', name: ''},
+  {id: 'spain', name: 'Spain'},
+  {id: 'portugal', name: 'Portugal'},
+  {id: 'other', name: 'Other Places in the World'},
 ];
 
 export const regionsOfSpain = [

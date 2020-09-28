@@ -1,7 +1,8 @@
+const dataBase = window.localStorage.getItem('users')
+  ? JSON.parse(window.localStorage.getItem('users'))
+  : [];
+
 export const saveUser = (user) => {
-  const dataBase = window.localStorage.getItem('users')
-    ? JSON.parse(window.localStorage.getItem('users'))
-    : [];
   dataBase.push(user);
   window.localStorage.setItem('users', JSON.stringify(dataBase));
 };
