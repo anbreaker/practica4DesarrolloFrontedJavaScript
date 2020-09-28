@@ -1,10 +1,11 @@
 import {templateNavbar} from '../templates/navbar.js';
 import {templateFooter} from '../templates/footer.js';
-import {regionsSpain, regionsPortugal, countries} from './regionsConfig.js';
+import {countries, regionsOfSpain, regionsOfPortugal} from './regionsConfig.js';
 
 function main() {
   const formRegister = document.querySelector('#form-register');
   const formLogin = document.querySelector('#form-login');
+  const selectCountry = document.querySelector('#selectCountry');
   const selectRegion = document.querySelector('#selectRegion');
 
   document.querySelector('.header-nav').innerHTML = templateNavbar;
@@ -17,18 +18,39 @@ function main() {
     setSelect(countries);
   }
 
-  if (selectRegion) selectRegion.addEventListener('change', selectRegions);
+  if (selectCountry) selectCountry.addEventListener('change', selectRegions);
 
   function setSelect(countries) {
     let countriesSelect = '<option></option>';
     countries.forEach(
-      (item) => (countriesSelect += `<option value="${item.id}">${item.name}</option>`)
+      (item) => (countriesSelect += `<option value="${item.name}">${item.name}</option>`)
     );
-    formRegister.querySelector('#exampleSelect').innerHTML = countriesSelect;
+    selectCountry.innerHTML = countriesSelect;
+  }
+
+  // Como no repetir esta funcion....
+
+  function setSelectRegions(regions) {
+    let countriesSelect = '';
+    regions.forEach(
+      (item) => (countriesSelect += `<option value="${item.name}">${item.name}</option>`)
+    );
+    selectRegion.innerHTML = countriesSelect;
   }
 
   function selectRegions() {
-    console.log('ver');
+    console.log(selectCountry, selectCountry.selectedIndex);
+    if (selectCountry.selectedIndex === 1) {
+      selectRegion.parentElement.classList.remove('nodisplay');
+      setSelectRegions(regionsOfSpain);
+    }
+    if (selectCountry.selectedIndex === 2) {
+      selectRegion.parentElement.classList.remove('nodisplay');
+      setSelectRegions(regionsOfPortugal);
+    }
+    if (selectCountry.selectedIndex === 0 || selectCountry.selectedIndex === 3) {
+      selectRegion.parentElement.classList.add('nodisplay');
+    }
   }
 
   function sendUser(event) {
@@ -49,8 +71,9 @@ function main() {
     user.confirmPassword = inputsForm[9].value;
     user.apiKey = inputsForm[10].value;
     user.country = inputsForm[11].value;
-    user.textArea = inputsForm[12].value;
-    user.aceptTerms = inputsForm[13].checked;
+    user.region = inputsForm[12].value;
+    user.textArea = inputsForm[13].value;
+    user.aceptTerms = inputsForm[14].checked;
 
     const dataBase = window.localStorage.getItem('users')
       ? JSON.parse(window.localStorage.getItem('users'))
@@ -124,8 +147,8 @@ const validateForm = (data) => {
 
 document.addEventListener('DOMContentLoaded', main);
 
-//https://plataforma.keepcoding.io/courses/dearrollo-frontend-javasscript-9/lectures/24503547
-//
+// https://plataforma.keepcoding.io/courses/dearrollo-frontend-javasscript-9/lectures/24503547
+// 3.20
 
 // https://plataforma.keepcoding.io/courses/dearrollo-frontend-javasscript-9/lectures/24503547
-// min 3.20
+// min 34
