@@ -67,7 +67,14 @@ function main() {
     user.textArea = inputsForm[13].value;
     user.aceptTerms = inputsForm[14].checked;
 
-    if (user.password === user.confirmPassword) {
+    const compare = getUser(user.username);
+    console.log(compare);
+    console.log(compare.username);
+
+    if (user.username === compare.username) {
+      inputsForm[7].value = '';
+      showSms('Already exist username, choose other');
+    } else if (user.password === user.confirmPassword) {
       inputsForm.forEach((item) => (item.value = ''));
     } else {
       inputsForm[8].value = '';
@@ -76,7 +83,7 @@ function main() {
 
     saveUser(user);
 
-    if (inputsForm[8].value === inputsForm[9].value) window.location = 'login.html';
+    // if (inputsForm[8].value === inputsForm[9].value) window.location = 'login.html';
   }
 
   function onClickLogin(event) {
