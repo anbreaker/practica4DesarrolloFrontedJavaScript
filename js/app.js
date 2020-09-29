@@ -50,8 +50,6 @@ function main() {
     // const formRegister = document.querySelector('#form-register');
     const inputsForm = [...formRegister.querySelectorAll('.form-input')];
 
-    validateForm(inputsForm);
-
     user.gender = inputsForm.filter((item) => item.checked)[0].value;
     user.name = inputsForm[3].value;
     user.surname = inputsForm[4].value;
@@ -66,7 +64,11 @@ function main() {
     user.textArea = inputsForm[13].value;
     user.aceptTerms = inputsForm[14].checked;
 
-    if (getUser(user.email) !== undefined) {
+    let compare = getUser(user.name);
+    console.log('Ver esto!!---------->', compare);
+
+    if (compare !== undefined) {
+      console.log(compare);
       if (user.email === getUser(user.email)) {
         inputsForm[5].value = '';
         showSms('Mail address already exists, choose another one.');
@@ -75,18 +77,18 @@ function main() {
         inputsForm[7].value = '';
         showSms('This username already exists. Please try another. ');
       }
-    } else if (user.password === user.confirmPassword) {
+    }
+
+    if (user.password === user.confirmPassword) {
       inputsForm.forEach((item) => (item.value = ''));
     } else {
       inputsForm[8].value = '';
       showSms('The password does not match');
     }
 
-    console.log(user.password);
-    console.log(user.confirmPassword);
-
-    if (user.password === user.confirmPassword) {
+    if (user.password === user.confirmPassword && user.username !== '') {
       // window.location = 'login.html';
+      console.log(user);
       saveUser(user);
     }
   }

@@ -8,5 +8,6 @@ export const saveUser = (user) => {
 };
 
 export const getUser = (name) => {
-  return dataBase.find((item) => item.name.toLowerCase() === name.toLowerCase());
+  const user = dataBase.find((item) => item.name.toLowerCase() === name.toLowerCase());
+  return user;
 };
