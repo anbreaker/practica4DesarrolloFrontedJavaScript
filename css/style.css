@@ -13,3 +13,21 @@ footer {
 .nodisplay {
   display: none !important;
 }
+
+.movies {
+  width: 80%;
+  margin: 0.5rem auto;
+}
+
+.table-movies {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.table-movies {
+  width: 100%;
+  font-size: 1.4rem;
+  /* color: green; */
+  margin: 1rem auto;
+  padding: 0.5rem 1rem;
+}

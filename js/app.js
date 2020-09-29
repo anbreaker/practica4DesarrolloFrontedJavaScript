@@ -73,9 +73,10 @@ function main() {
       showSms('The password does not match');
     }
 
-    saveUser(user);
-
-    if (user.password === user.confirmPassword) window.location = 'login.html';
+    if (user.password === user.confirmPassword) {
+      saveUser(user);
+      window.location = 'login.html';
+    }
   }
 
   function onClickLogin(event) {
