@@ -30,7 +30,6 @@ function main() {
   }
 
   function selectRegions() {
-    console.log(selectCountry, selectCountry.value);
     if (selectCountry.value === 'spain') {
       selectRegion.parentElement.classList.remove('nodisplay');
       fillSelect(regionsOfSpain, selectRegion);
@@ -125,9 +124,3 @@ const validateForm = (data) => {
 };
 
 document.addEventListener('DOMContentLoaded', main);
-
-// https://plataforma.keepcoding.io/courses/dearrollo-frontend-javasscript-9/lectures/24503547
-// 3.20
-
-// https://plataforma.keepcoding.io/courses/dearrollo-frontend-javasscript-9/lectures/24503547
-// min 34
