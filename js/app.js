@@ -30,7 +30,6 @@ function main() {
   }
 
   function selectRegions() {
-    console.log(selectCountry, selectCountry.value);
     if (selectCountry.value === 'spain') {
       selectRegion.parentElement.classList.remove('nodisplay');
       fillSelect(regionsOfSpain, selectRegion);
@@ -67,13 +66,15 @@ function main() {
     user.textArea = inputsForm[13].value;
     user.aceptTerms = inputsForm[14].checked;
 
-    const compare = getUser(user.username);
-    console.log(compare);
-    console.log(compare.username);
-
-    if (user.username === compare.username) {
-      inputsForm[7].value = '';
-      showSms('Already exist username, choose other');
+    if (getUser(user.email) !== undefined) {
+      if (user.email === getUser(user.email)) {
+        inputsForm[5].value = '';
+        showSms('Mail address already exists, choose another one.');
+      }
+      if (user.username === getUser(user.username)) {
+        inputsForm[7].value = '';
+        showSms('This username already exists. Please try another. ');
+      }
     } else if (user.password === user.confirmPassword) {
       inputsForm.forEach((item) => (item.value = ''));
     } else {
@@ -81,9 +82,13 @@ function main() {
       showSms('The password does not match');
     }
 
-    saveUser(user);
+    console.log(user.password);
+    console.log(user.confirmPassword);
 
-    // if (inputsForm[8].value === inputsForm[9].value) window.location = 'login.html';
+    if (user.password === user.confirmPassword) {
+      // window.location = 'login.html';
+      saveUser(user);
+    }
   }
 
   function onClickLogin(event) {
