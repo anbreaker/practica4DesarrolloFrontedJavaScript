@@ -1,4 +1,5 @@
 import {URL_API, API_KEY} from '../js/config.js';
+import {getUser} from './dataBase.js';
 
 const btnApi = document.querySelector('.btn-info');
 
@@ -12,7 +13,5 @@ btnApi.addEventListener('click', () => {
       return response.json();
     })
     .then((data) => console.log(data))
-    .catch((error) => {
-      console.error(error);
-    });
+    .catch((error) => console.error(error));
 });
