@@ -76,7 +76,7 @@ function main() {
 
     saveUser(user);
 
-    if (inputsForm[8].value === inputsForm[9].value) window.location = 'login.html';
+    if (user.password === user.confirmPassword) window.location = 'login.html';
   }
 
   function onClickLogin(event) {
