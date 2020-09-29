@@ -21,22 +21,22 @@ function main() {
 
   function changeDom(data) {
     btnApi.classList.add('nodisplay');
+    if (!data) return;
+
     let tableHtml = '';
 
     console.log(data.results);
-
     let movies = data.results;
-
     movies.forEach((item) => {
       tableHtml += `
-        <tr>
-          <td>${item.id}</td>
-          <td>${item.original_title}</td>
-          <td><a href="${item.poster_path}">${item.poster_path}</a></td>
-        </tr>
-      `;
+          <tr class="table-warning">
+            <td>${item.original_title}</td>
+            <td><a href="${item.poster_path}">${item.poster_path}</a></td>
+            <td>${item.id}</td>
+          </tr>
+        `;
     });
-
+    document.querySelector('table.table-movies').classList.remove('nodisplay');
     document.querySelector('table.table-movies tbody').innerHTML = tableHtml;
   }
 }
