@@ -31,7 +31,7 @@ function main() {
       tableHtml += `
           <tr class="table-warning">
             <td>${item.original_title}</td>
-            <td><a href="${item.poster_path}">${item.poster_path}</a></td>
+            <td><a href="https://www.themoviedb.org/movie/${item.id}" target="_blank">https://www.themoviedb.org/movie/${item.id}</a></td>
             <td>${item.id}</td>
           </tr>
         `;
@@ -42,3 +42,6 @@ function main() {
 }
 
 document.addEventListener('DOMContentLoaded', main);
+
+// https://plataforma.keepcoding.io/courses/dearrollo-frontend-javasscript-9/lectures/24557272
+// 3.16
