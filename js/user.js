@@ -2,9 +2,14 @@ import {URL_API} from '../js/config.js';
 import {getUserByEmail} from './dataBase.js';
 
 function main() {
-  const API_KEY = getUserByEmail(sessionStorage.getItem('email')).apiKey;
-
   let page = 1;
+
+  const userSession = getUserByEmail(sessionStorage.getItem('email'));
+  const API_KEY = userSession.apiKey;
+  const user = userSession.name;
+
+  document.querySelector('#name-user').innerHTML = `<br>${user}`;
+
   const btnApiPopularMovies = document.querySelector('.btn-popular-movies');
   const prevPageBtn = document.querySelector('#prev-pagination');
   const nextPageBtn = document.querySelector('#next-pagination');
