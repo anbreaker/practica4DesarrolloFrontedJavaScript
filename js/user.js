@@ -2,11 +2,11 @@ import {URL_API, API_KEY} from '../js/config.js';
 import {getUser} from './dataBase.js';
 
 function main() {
-  const btnApi = document.querySelector('.btn-info');
+  const btnApiPopularMovies = document.querySelector('.btn-popular-movies');
 
-  if (btnApi) btnApi.addEventListener('click', onClickMovies);
+  if (btnApiPopularMovies) btnApiPopularMovies.addEventListener('click', getMovies);
 
-  function onClickMovies() {
+  function getMovies() {
     fetch(URL_API + API_KEY)
       .then((response) =>
         response.ok ? Promise.resolve(response) : Promise.reject(response)
@@ -20,19 +20,19 @@ function main() {
   }
 
   function changeDom(data) {
-    btnApi.classList.add('nodisplay');
+    btnApiPopularMovies.classList.add('nodisplay');
     if (!data) return;
+    console.log(data.results);
 
     let tableHtml = '';
-
-    console.log(data.results);
     let movies = data.results;
     movies.forEach((item) => {
       tableHtml += `
           <tr class="table-warning">
             <td>${item.original_title}</td>
-            <td><a href="https://www.themoviedb.org/movie/${item.id}" target="_blank">https://www.themoviedb.org/movie/${item.id}</a></td>
-            <td>${item.id}</td>
+            <td><a href="https://www.themoviedb.org/movie/${item.id}" 
+                   target="_blank">https://www.themoviedb.org/movie/${item.id}</a>
+            </td>
           </tr>
         `;
     });
@@ -42,6 +42,3 @@ function main() {
 }
 
 document.addEventListener('DOMContentLoaded', main);
-
-// https://plataforma.keepcoding.io/courses/dearrollo-frontend-javasscript-9/lectures/24557272
-// 3.16

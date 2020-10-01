@@ -15,7 +15,7 @@ footer {
 }
 
 .movies {
-  width: 80%;
+  width: 100%;
   margin: 0.5rem auto;
 }
 
@@ -26,7 +26,7 @@ footer {
 
 .table-movies {
   width: 100%;
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   /* color: green; */
   margin: 1rem auto;
   padding: 0.5rem 1rem;
