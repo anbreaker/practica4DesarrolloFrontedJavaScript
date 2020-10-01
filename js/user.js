@@ -36,8 +36,10 @@ function main() {
           </tr>
         `;
     });
-    document.querySelector('table.table-movies').classList.remove('nodisplay');
-    document.querySelector('table.table-movies tbody').innerHTML = tableHtml;
+
+    document.querySelector('#pagination').classList.remove('nodisplay');
+    document.querySelector('.table-movies').classList.remove('nodisplay');
+    document.querySelector('.table-movies').innerHTML = tableHtml;
   }
 }
 
