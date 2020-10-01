@@ -1,7 +1,7 @@
 import {templateNavbar} from '../templates/navbar.js';
 import {templateFooter} from '../templates/footer.js';
 import {countries, regionsOfSpain, regionsOfPortugal} from './regionsConfig.js';
-import {saveUser, getUser} from './dataBase.js';
+import {saveUser, getUserByEmail} from './dataBase.js';
 
 function main() {
   const formRegister = document.querySelector('#form-register');
@@ -84,16 +84,17 @@ function main() {
     const inputsLogin = [...formLogin.querySelectorAll('.form-input')];
     validateForm(inputsLogin);
     const userLog = {};
-    userLog.name = inputsLogin[0].value;
+    userLog.email = inputsLogin[0].value;
     userLog.password = inputsLogin[1].value;
 
-    const findUser = getUser(userLog.name);
+    const findUser = getUserByEmail(userLog.email);
 
     if (!findUser) {
       showSms('The data entry is not correct');
     } else if (findUser.password !== inputsLogin[1].value) {
       showSms('The data entry is not correct');
     } else {
+      sessionStorage.setItem('email', userLog.email);
       window.location = 'user.html';
     }
   }

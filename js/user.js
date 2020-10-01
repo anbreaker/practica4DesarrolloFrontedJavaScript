@@ -1,7 +1,9 @@
-import {URL_API, API_KEY} from '../js/config.js';
-import {getUser} from './dataBase.js';
+import {URL_API} from '../js/config.js';
+import {getUserByEmail} from './dataBase.js';
 
 function main() {
+  const API_KEY = getUserByEmail(sessionStorage.getItem('email')).apiKey;
+
   let page = 1;
   const btnApiPopularMovies = document.querySelector('.btn-popular-movies');
   const prevPageBtn = document.querySelector('#prev-pagination');
@@ -15,7 +17,6 @@ function main() {
     page += flag;
     getMovies();
     document.querySelector('#prev-pagination').classList.remove('hiddenBtn');
-    console.log(page);
     if (page === 1) document.querySelector('#prev-pagination').classList.add('hiddenBtn');
   }
 
@@ -27,10 +28,7 @@ function main() {
       .then((response) =>
         response.ok ? Promise.resolve(response) : Promise.reject(response)
       )
-      .then((response) => {
-        // console.log(response);
-        return response.json();
-      })
+      .then((response) => response.json()) //console.log(response);
       .then((data) => changeDom(data))
       .catch((error) => console.error(error));
   }
@@ -38,7 +36,6 @@ function main() {
   function changeDom(data) {
     btnApiPopularMovies.classList.add('nodisplay');
     if (!data) return;
-    console.log(data.results);
 
     let tableHtml = '';
     let movies = data.results;
@@ -46,8 +43,10 @@ function main() {
       tableHtml += `
           <tr class="table-warning">
             <td>${item.original_title}</td>
-            <td><a href="https://www.themoviedb.org/movie/${item.id}" 
-                   target="_blank">https://www.themoviedb.org/movie/${item.id}</a>
+            <td>
+              <a href="https://www.themoviedb.org/movie/${item.id}" 
+                 target="_blank">https://www.themoviedb.org/movie/${item.id}
+              </a>
             </td>
           </tr>
         `;

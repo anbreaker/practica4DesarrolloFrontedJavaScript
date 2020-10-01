@@ -10,3 +10,7 @@ export const saveUser = (user) => {
 export const getUser = (name) => {
   return dataBase.find((item) => item.name.toLowerCase() === name.toLowerCase());
 };
+
+export const getUserByEmail = (email) => {
+  return dataBase.find((item) => item.email.toLowerCase() === email.toLowerCase());
+};
