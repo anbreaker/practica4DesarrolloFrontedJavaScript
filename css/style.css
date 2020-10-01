@@ -24,6 +24,10 @@ footer {
   margin-bottom: 1rem;
 }
 
+.hiddenBtn {
+  visibility: hidden;
+}
+
 .table-movies {
   width: 100%;
   font-size: 1.2rem;
