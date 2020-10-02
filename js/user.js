@@ -56,15 +56,15 @@ function main() {
     let movies = data.results;
     movies.forEach((item) => {
       tableHtml += `
-          <tr class="table-warning">
-            <td>${item.original_title}</td>
-            <td>
-              <a href="https://www.themoviedb.org/movie/${item.id}" 
-                 target="_blank">https://www.themoviedb.org/movie/${item.id}
-              </a>
-            </td>
-          </tr>
-        `;
+        <tr class="table-warning">
+          <td>${item.original_title}</td>
+          <td>
+            <a href="https://www.themoviedb.org/movie/${item.id}" 
+                target="_blank">https://www.themoviedb.org/movie/${item.id}
+            </a>
+          </td>
+        </tr>
+      `;
     });
 
     document.querySelector('#pagination').classList.remove('nodisplay');
