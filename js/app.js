@@ -47,8 +47,6 @@ function main() {
   function sendUser(event) {
     event.preventDefault();
     const user = {};
-
-    // const formRegister = document.querySelector('#form-register');
     const inputsForm = [...formRegister.querySelectorAll('.form-input')];
 
     validateForm(inputsForm);
@@ -67,11 +65,9 @@ function main() {
     user.textArea = inputsForm[13].value;
     user.aceptTerms = inputsForm[14].checked;
 
-    console.log(getUserByEmail(user.email).email, 'pinta esto');
-    if (getUserByEmail(user.email).email) {
+    if (existUserMail(user.email)) {
       inputsForm[5].value = '';
       showSms('This email is already in use, choose another email');
-      console.log('This email is already in use, choose another email');
     }
 
     if (user.password !== user.confirmPassword) {
@@ -79,10 +75,15 @@ function main() {
       showSms('The password does not match');
     }
 
-    if (user.password === user.confirmPassword && !getUserByEmail(user.email).email) {
+    if (user.password === user.confirmPassword && existUserMail(user.email) === false) {
       saveUser(user);
       window.location = 'login.html';
     }
+  }
+
+  function existUserMail(email) {
+    if (getUserByEmail(email) !== undefined) return true;
+    return false;
   }
 
   function onClickLogin(event) {
