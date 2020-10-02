@@ -35,7 +35,17 @@ function main() {
       )
       .then((response) => response.json()) //console.log(response);
       .then((data) => changeDom(data))
-      .catch((error) => console.error(error));
+      .catch((error) => {
+        console.error(error);
+        showErrorApiKey();
+      });
+  }
+
+  function showErrorApiKey() {
+    btnApiPopularMovies.classList.add('nodisplay');
+    document.querySelector('#show-error').innerHTML = `
+      <h3>In your register, your API_KEY is not correct</h3>
+    `;
   }
 
   function changeDom(data) {
