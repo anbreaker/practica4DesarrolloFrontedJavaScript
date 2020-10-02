@@ -17,21 +17,17 @@ Use liveserver.
 
 ## Author
 
-👤 **anbreaker**
+👤 **Francisco Javier Antúnez Durán aka anbreaker**
 
 - Website: https://rootdevs.es/
 - Twitter: [@antunez19](https://twitter.com/antunez19)
 - Github: [@anbreaker](https://github.com/anbreaker)
-- LinkedIn: [@https:\/\/www.linkedin.com\/in\/francisco-javier-antunez-duran\/](https://linkedin.com/in/https://www.linkedin.com/in/francisco-javier-antunez-duran/)
+- LinkedIn: [@https:\/\/www.linkedin.com\/in\/francisco-javier-antunez-duran\/](https://www.linkedin.com/in/francisco-javier-antunez-duran/)
 
 ## To see an example on youtube (click on the image)
 
 [![](https://github.com/anbreaker/practica4DesarrolloFrontedJavaScript/blob/master/img/web.png?raw=true)](https://www.youtube.com/watch?v=D6Udvcodd6k")
 
-## Show your support
-
-Give a ⭐️ if this project helped you!
+## See you in other projects! 🚀
 
 ---
-
-_This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_
