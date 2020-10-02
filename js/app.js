@@ -47,6 +47,7 @@ function main() {
   function sendUser(event) {
     event.preventDefault();
     const user = {};
+
     // const formRegister = document.querySelector('#form-register');
     const inputsForm = [...formRegister.querySelectorAll('.form-input')];
 
@@ -66,14 +67,19 @@ function main() {
     user.textArea = inputsForm[13].value;
     user.aceptTerms = inputsForm[14].checked;
 
-    if (user.password === user.confirmPassword) {
-      inputsForm.forEach((item) => (item.value = ''));
-    } else {
+    console.log(getUserByEmail(user.email).email, 'pinta esto');
+    if (getUserByEmail(user.email).email) {
+      inputsForm[5].value = '';
+      showSms('This email is already in use, choose another email');
+      console.log('This email is already in use, choose another email');
+    }
+
+    if (user.password !== user.confirmPassword) {
       inputsForm[8].value = '';
       showSms('The password does not match');
     }
 
-    if (user.password === user.confirmPassword) {
+    if (user.password === user.confirmPassword && !getUserByEmail(user.email).email) {
       saveUser(user);
       window.location = 'login.html';
     }
